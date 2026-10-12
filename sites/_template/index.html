@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awwwards Site Template · Studio Concept</title>
+  <meta name="description" content="Awwwards-caliber creative web experience template with fluid scroll and editorial layout.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="brand-logo">
+        <span class="logo-mark">◈</span>
+        <span class="brand-name">STUDIO VOID</span>
+      </a>
+      <nav class="header-nav">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#works" class="nav-link">Works</a>
+        <a href="#contact" class="btn-cta">Initiate Project</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Pinned Scroll Timeline Stage -->
+  <main>
+    <section class="pinned-stage-container" id="pinnedHero">
+      <div class="sticky-viewport" id="stickyViewport">
+        
+        <!-- Background Visual / Canvas / Video Layer -->
+        <div class="media-canvas-wrap">
+          <div class="ambient-glow"></div>
+          <div class="canvas-placeholder">
+            <span class="media-badge">PINNED CANVAS / MEDIA LAYER</span>
+          </div>
+        </div>
+
+        <!-- Overlaid Narrative Scenes -->
+        <div class="scenes-overlay-wrap">
+          <article class="scene-card is-active" id="scene1" data-index="0">
+            <span class="scene-tag">ACT 01 // GENESIS</span>
+            <h1 class="scene-title">The intersection of <em class="accent-text">pure form</em> and motion.</h1>
+            <p class="scene-desc">Sculpted for lasting cultural resonance, avoiding fleeting digital fads.</p>
+          </article>
+
+          <article class="scene-card" id="scene2" data-index="1">
+            <span class="scene-tag">ACT 02 // VELOCITY</span>
+            <h2 class="scene-title">Fluid architecture with <em class="accent-text">infinite depth</em>.</h2>
+            <p class="scene-desc">Every interaction tuned to 60fps micro-physics and kinetic balance.</p>
+          </article>
+
+          <article class="scene-card" id="scene3" data-index="2">
+            <span class="scene-tag">ACT 03 // THE MONOLITH</span>
+            <h2 class="scene-title">Digital artifacts engineered <em class="accent-text">for decades</em>.</h2>
+            <p class="scene-desc">Explore the portfolio of spatial experiences and computational brand worlds.</p>
+          </article>
+        </div>
+
+        <!-- Scrub Progress Rail -->
+        <div class="scrub-status-bar">
+          <span class="scrub-label">SCRUB TIMELINE</span>
+          <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+          <span class="scrub-time" id="scrubVal">00%</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Post-Hero Content Sections -->
+    <section id="about" class="content-section">
+      <div class="container">
+        <span class="section-kicker">01 / PHILOSOPHY</span>
+        <h2 class="section-heading">Form follows emotional impact.</h2>
+        <p class="section-lead">A studio framework built for rapid, uncompromising creative execution.</p>
+      </div>
+    </section>
+
+    <section id="works" class="content-section">
+      <div class="container">
+        <span class="section-kicker">02 / ARCHIVE</span>
+        <h2 class="section-heading">Selected Creations</h2>
+        <div class="works-grid">
+          <div class="work-card">
+            <div class="card-media"></div>
+            <h3>Exhibition Zero</h3>
+            <p>Spatial Direction · 2026</p>
+          </div>
+          <div class="work-card">
+            <div class="card-media"></div>
+            <h3>Aura Monolith</h3>
+            <p>Interactive Systems · 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+# Dependencies & Package Managers
+node_modules/
+package-lock.json.bak
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Python & Bytecode Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment, Secrets & Local Credentials
+.env
+.env.*
+*.env
+*.local
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.token
+credentials.json
+secrets/
+
+# Operating System & File System Metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDEs & Editor Configuration
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Browser & Headless Automation Artifacts
+scrollcraft/.browsers/
+scrollcraft/**/frames/
+scrollcraft/**/lab/shots/
+scrollcraft/**/lab/mobile/
+scrollcraft/**/lab/reduced/
+test-results/
+playwright-report/
+.playwright/
+
+# Logs & Temporary Files
+*.log
+*.tmp
+*.bak
+*.orig

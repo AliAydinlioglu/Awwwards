@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awwwards Creative Lab · Multi-Site Digital Studio</title>
+  <meta name="description" content="Master creative workspace for designing and prototyping Awwwards-caliber digital experiences, kinetic scrollytelling, and spatial interfaces.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="hub.css">
+</head>
+<body>
+
+  <!-- Ambient background glow mesh -->
+  <div class="ambient-glow-mesh" aria-hidden="true"></div>
+
+  <!-- Master Header -->
+  <header class="hub-header">
+    <div class="hub-header-inner">
+      <div class="hub-brand">
+        <svg class="brand-symbol" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3"/>
+          <path d="M18 4L28 28H8L18 4Z" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="18" cy="18" r="3" fill="currentColor"/>
+        </svg>
+        <span class="brand-text">AWWWARDS CREATIVE LAB</span>
+        <span class="brand-badge">STUDIO WORKSPACE</span>
+      </div>
+
+      <div class="hub-meta">
+        <div><span class="status-dot"></span>LOCAL RUNNER: PORT 8080</div>
+        <div>ACTIVE SITES: 01 PRODUCTION · 01 TEMPLATE</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="hub-content">
+
+    <!-- Intro Headline -->
+    <section class="hub-intro">
+      <span class="hub-kicker">// CREATIVE DEVELOPMENT WORKSPACE</span>
+      <h1 class="hub-headline">
+        Architecting <span class="gold-gradient-text">Awwwards-Caliber</span> web monoliths.
+      </h1>
+      <p class="hub-description">
+        A structured, multi-site creative engineering environment. Build, test, and iterate on high-concept digital experiences, kinetic scrollytelling, and bespoke spatial interfaces.
+      </p>
+    </section>
+
+    <!-- Site N° 01: Featured Masterpiece Card (Atelier Aurelia) -->
+    <section class="featured-showcase-card">
+      <div class="showcase-content">
+        <div>
+          <div class="showcase-badge-row">
+            <span class="badge-flag">SITE N° 01</span>
+            <span class="badge-spec">INSPIRED BY PEAR.NO</span>
+            <span class="badge-spec">·</span>
+            <span class="badge-spec">PORT 8080</span>
+          </div>
+
+          <h2 class="showcase-title">ATELIER AURELIA</h2>
+          <p class="showcase-synopsis">
+            Neoclassical Digital Atelier & Architectural Commissions. Features 500vh pinned scroll cinema, 60fps intra-frame scrubbed Carrara marble hero, dual-city live clocks (Oslo & Athens), procedural Web Audio drone synthesizer, and interactive commission console.
+          </p>
+
+          <div class="showcase-tags">
+            <span class="tag-pill">60FPS VIDEO SCRUB</span>
+            <span class="tag-pill">ACTIVE STICKY GUARDIAN</span>
+            <span class="tag-pill">WEB AUDIO DRONE</span>
+            <span class="tag-pill">EDITORIAL TYPOGRAPHY</span>
+            <span class="tag-pill">AESTHETIC GRADE: SOTD</span>
+          </div>
+        </div>
+
+        <div class="showcase-actions">
+          <a href="/sites/aurelia/" class="btn-launch-primary" id="launchAureliaBtn">
+            <span>LAUNCH EXPERIENCE</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+          <a href="https://github.com" class="btn-view-secondary" onclick="alert('Explore documentation in sites/aurelia/README.md'); return false;">
+            VIEW SITE SPECS
+          </a>
+        </div>
+      </div>
+
+      <div class="showcase-media-preview">
+        <img src="/sites/aurelia/public/images/hero_poster.jpg" alt="Atelier Aurelia Sculptural Eye Preview">
+      </div>
+    </section>
+
+    <!-- Studio Registry Grid -->
+    <section class="registry-section">
+      <div class="registry-section-header">
+        <h2>ALL SITES & TEMPLATES</h2>
+        <span class="badge-spec">DIRECTORY: /sites/</span>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Atelier Aurelia Card -->
+        <article class="project-card">
+          <div class="card-top">
+            <span class="card-number">01 / PRODUCTION SITE</span>
+            <h3 class="card-name">Atelier Aurelia</h3>
+            <p class="card-desc">
+              Neoclassical luxury atelier with cinematic video scrubbing and procedural audio synthesis.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <a href="/sites/aurelia/" class="card-link">
+              <span>EXPLORE /sites/aurelia/</span>
+              <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Starter Template Card -->
+        <article class="project-card">
+          <div class="card-top">
+            <span class="card-number">02 / STARTER TEMPLATE</span>
+            <h3 class="card-name">Core Motion Boilerplate</h3>
+            <p class="card-desc">
+              Pre-configured 60fps lerp scroll loop, active sticky guardian, dark design tokens, and scene card transitions.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <a href="/sites/_template/" class="card-link">
+              <span>EXPLORE /sites/_template/</span>
+              <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- New Opus Scaffolder Card -->
+        <article class="project-card new-opus-card">
+          <div class="card-top">
+            <span class="card-number">03 / SCAFFOLD NEW SITE</span>
+            <h3 class="card-name">+ Create New Opus</h3>
+            <p class="card-desc">
+              Generate an entirely new self-contained Awwwards concept in seconds with one terminal command:
+            </p>
+            <div class="code-snippet">npm run new &lt;site-name&gt;</div>
+          </div>
+          <div class="card-bottom">
+            <span class="card-desc" style="font-size: 0.75rem;">Instant auto-scaffolding to /sites/</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Architecture & Structure Blueprint -->
+    <section class="arch-blueprint-card">
+      <div class="blueprint-header">// REPOSITORY ARCHITECTURE BLUEPRINT</div>
+      <pre class="blueprint-tree">
+Awwwards/
+├── sites/                      # All self-contained Awwwards projects
+│   ├── aurelia/                # Site 01: Atelier Aurelia (Cinematic Neoclassical)
+│   │   ├── index.html          # Markup & 500vh stage
+│   │   ├── styles.css          # Design system tokens
+│   │   ├── main.js             # 60fps scrub engine & audio drone
+│   │   ├── public/             # Video & high-res images
+│   │   └── previews/           # Screen captures & verification media
+│   └── _template/              # Boilerplate for future sites
+│       ├── index.html
+│       ├── styles.css
+│       └── main.js
+├── tools/                      # Engineering & automation toolchain
+│   ├── server.py               # RFC 7233 byte-range multi-site HTTP streaming
+│   ├── create-site.js          # CLI scaffolder (`npm run new <name>`)
+│   └── cdp_helper.py           # Headless CDP screenshot runner
+├── shared/                     # Shared motion math, audio & utility helpers
+│   ├── css/
+│   └── js/
+├── index.html                  # Creative Lab Master Showcase Hub (You are here)
+└── package.json                # npm scripts for running & creating sites
+      </pre>
+    </section>
+
+  </main>
+
+</body>
+</html>

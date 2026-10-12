@@ -1,0 +1,306 @@
+/* ==========================================================================
+   AWWWARDS STUDIO STARTER TEMPLATE — DESIGN SYSTEM & TOKENS
+   ========================================================================== */
+:root {
+  --bg-primary: #0a0b10;
+  --bg-surface: #12141c;
+  --bg-card: rgba(22, 25, 36, 0.7);
+  --text-main: #f5f5f7;
+  --text-muted: #8e93a0;
+  --accent: #5a78ff;
+  --accent-glow: rgba(90, 120, 255, 0.25);
+  --line-subtle: rgba(255, 255, 255, 0.08);
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 24px 4vw;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+}
+
+.btn-cta {
+  background: var(--text-main);
+  color: var(--bg-primary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 100px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+/* Pinned Scroll Stage (Awwwards Style) */
+.pinned-stage-container {
+  height: 400vh;
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+.sticky-viewport {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ambient-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.canvas-placeholder {
+  border: 1px dashed var(--line-subtle);
+  padding: 40px;
+  border-radius: 8px;
+  background: rgba(18, 20, 28, 0.4);
+}
+
+.media-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+/* Scene Cards */
+.scenes-overlay-wrap {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 4vw;
+}
+
+.scene-card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s var(--ease-fluid);
+  max-width: 640px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  padding: 36px 40px;
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+}
+
+.scene-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) translateY(0);
+}
+
+.scene-tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.scene-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.accent-text {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.scene-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Scrub Status Bar */
+.scrub-status-bar {
+  position: absolute;
+  bottom: 28px;
+  left: 4vw;
+  right: 4vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.scrub-bar {
+  flex: 1;
+  height: 2px;
+  background: var(--line-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrub-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+}
+
+/* Content Sections */
+.content-section {
+  padding: 120px 0;
+  position: relative;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--line-subtle);
+  z-index: 20;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.section-lead {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 50px;
+}
+
+.work-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.card-media {
+  height: 220px;
+  background: #1a1e2a;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.work-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.work-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}

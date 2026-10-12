@@ -1,0 +1,23 @@
+{
+  "name": "awwwards-creative-lab",
+  "version": "1.0.0",
+  "description": "Multi-site laboratory for building Awwwards-caliber digital experiences.",
+  "main": "server.py",
+  "scripts": {
+    "dev": "python3 server.py",
+    "dev:aurelia": "python3 server.py --site aurelia",
+    "new": "node tools/create-site.js",
+    "test:cdp": "python3 tools/cdp_helper.py"
+  },
+  "keywords": [
+    "awwwards",
+    "creative-development",
+    "scrollytelling",
+    "webgl",
+    "motion-design"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "playwright-core": "^1.64.0"
+  }
+}

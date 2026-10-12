@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#090a0f">
+  
+  <title>AURELIA — Neoclassical Digital Atelier & Architectural Commissions</title>
+  <meta name="description" content="Atelier Aurelia sculpts permanent digital monuments, high-craft brand architecture, and revenue-share partnerships. Built for centuries, not seasons.">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23090a0f' stroke='%23c9a96e' stroke-width='2'/><path d='M16 6 L22 24 L10 24 Z' fill='%23c9a96e'/></svg>">
+
+  <!-- Typography: Cinzel, Cormorant Garamond, Space Grotesk, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading">
+
+  <!-- Architectural Background Grid & Ambient Overlays -->
+  <div class="arch-grid" aria-hidden="true">
+    <div class="grid-line grid-line--v left-guide"></div>
+    <div class="grid-line grid-line--v right-guide"></div>
+    <div class="crosshair crosshair--tl">+</div>
+    <div class="crosshair crosshair--tr">+</div>
+    <div class="crosshair crosshair--bl">+</div>
+    <div class="crosshair crosshair--br">+</div>
+  </div>
+
+  <!-- Precision Header -->
+  <header class="atelier-header" id="top">
+    <div class="header-inner">
+      <a href="#top" class="brand-monogram" aria-label="Aurelia Home">
+        <span class="mark-symbol">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3"/>
+            <path d="M18 4L28 28H8L18 4Z" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="18" cy="18" r="3" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="mark-word">AURELIA</span>
+      </a>
+
+      <div class="header-center">
+        <span class="status-indicator"></span>
+        <span class="atelier-coords">ATELIER N° 48 · OSLO & ATHENS</span>
+      </div>
+
+      <div class="header-actions">
+        <button id="soundToggle" class="sound-toggle-btn" aria-label="Toggle Sound Ambiance" type="button">
+          <span class="sound-wave">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span class="sound-label">SOUND: OFF</span>
+        </button>
+        <a href="#commission" class="btn-primary-pill">
+          <span>COMMISSION</span>
+          <svg class="pill-arrow" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating Timeline Rail (Desktop) -->
+  <nav class="timeline-rail" aria-label="Cinematic Timeline Navigation">
+    <div class="rail-track">
+      <div class="rail-progress" id="railProgressBar"></div>
+    </div>
+    <ul class="rail-items">
+      <li data-scene="0" class="rail-item is-active">
+        <button type="button" aria-label="Jump to Act I: The Gaze">
+          <span class="act-num">I</span>
+          <span class="act-title">THE GAZE</span>
+        </button>
+      </li>
+      <li data-scene="1" class="rail-item">
+        <button type="button" aria-label="Jump to Act II: The Alchemy">
+          <span class="act-num">II</span>
+          <span class="act-title">THE ALCHEMY</span>
+        </button>
+      </li>
+      <li data-scene="2" class="rail-item">
+        <button type="button" aria-label="Jump to Act III: Harmony">
+          <span class="act-num">III</span>
+          <span class="act-title">HARMONY</span>
+        </button>
+      </li>
+      <li data-scene="3" class="rail-item">
+        <button type="button" aria-label="Jump to Act IV: The Opus">
+          <span class="act-num">IV</span>
+          <span class="act-title">THE OPUS</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Live Scrub Gauge (HUD) -->
+  <aside class="scrub-hud" aria-hidden="true">
+    <div class="hud-item">
+      <span class="hud-label">CHRONO</span>
+      <span class="hud-val" id="hudTime">00.00s</span>
+    </div>
+    <div class="hud-divider">/</div>
+    <div class="hud-item">
+      <span class="hud-label">FRAME</span>
+      <span class="hud-val" id="hudFrame">001</span>
+    </div>
+  </aside>
+
+  <!-- Scroll-down prompt -->
+  <div class="scroll-cue" id="scrollCue" aria-hidden="true">
+    <div class="cue-mouse">
+      <div class="cue-wheel"></div>
+    </div>
+    <span class="cue-text">SCROLL TO SCRUB THE OPUS</span>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ============================================================== -->
+    <!-- HERO STAGE: 500vh PINNED SCROLL CINEMA -->
+    <!-- ============================================================== -->
+    <section class="cinema-stage-container" id="cinemaHero" aria-label="Cinematic Video Presentation">
+      <div class="cinema-sticky-viewport" id="cinemaStickyViewport">
+
+        <!-- Background Video Canvas / Video Layer -->
+        <div class="cinema-media-frame">
+          <video 
+            id="heroVideo" 
+            class="hero-video-element" 
+            playsinline 
+            webkit-playsinline 
+            muted 
+            preload="auto"
+            poster="public/images/hero_poster.jpg"
+            aria-hidden="true"
+          >
+            <source src="public/hero_scrub.mp4" type="video/mp4">
+          </video>
+          
+          <!-- Cinematic Vignette & Grain Layer -->
+          <div class="cinema-atmosphere-overlay"></div>
+          
+          <!-- Interactive Dust & Golden Motifs Canvas -->
+          <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+        </div>
+
+        <!-- Coordinated Scene Text Overlays -->
+        <div class="cinema-editorial-layer">
+
+          <!-- ACT I: 0.0s - 2.2s (Scroll 0% - 24%) -->
+          <article class="scene-panel scene-panel--1 is-active" id="scene1" data-scene-index="0">
+            <div class="scene-meta">
+              <span class="meta-tag">ACT I · THE GAZE</span>
+              <span class="meta-coords">CARRARE N° 01 · 00.00s</span>
+            </div>
+            <h1 class="scene-headline">
+              <span class="line-wrap"><span class="line-inner">In the stillness</span></span>
+              <span class="line-wrap"><span class="line-inner">of raw stone,</span></span>
+              <span class="line-wrap"><span class="line-inner serif-italic gold-text">vision precedes form.</span></span>
+            </h1>
+            <p class="scene-description">
+              Every monument begins in contemplative stillness. Long before chisel strikes Carrara, proportion is balanced in the mind. Antiquity was not simple—it was disciplined.
+            </p>
+            <div class="scene-specs">
+              <span class="spec-badge">01. GEOMETRY</span>
+              <span class="spec-badge">02. SILENCE</span>
+              <span class="spec-badge">03. SCALE</span>
+            </div>
+          </article>
+
+          <!-- ACT II: 2.2s - 5.0s (Scroll 24% - 50%) -->
+          <article class="scene-panel scene-panel--2" id="scene2" data-scene-index="1">
+            <div class="scene-meta">
+              <span class="meta-tag">ACT II · THE ALCHEMY</span>
+              <span class="meta-coords">AURUM VEIN · 03.50s</span>
+            </div>
+            <h2 class="scene-headline">
+              <span class="line-wrap"><span class="line-inner">The heavy permanence</span></span>
+              <span class="line-wrap"><span class="line-inner">of classical marble,</span></span>
+              <span class="line-wrap"><span class="line-inner serif-italic gold-text">gilded by patient fire.</span></span>
+            </h2>
+            <p class="scene-description">
+              We fuse the timeless gravity of sculpture with computational velocity. Nothing gratuitous. Every flourish is load-bearing; every curve answers a structural truth.
+            </p>
+            <div class="scene-specs">
+              <span class="spec-badge">GOLD LEAF 24K</span>
+              <span class="spec-badge">RATIO 1:1.618</span>
+              <span class="spec-badge">TENSION & BALANCE</span>
+            </div>
+          </article>
+
+          <!-- ACT III: 5.0s - 7.5s (Scroll 50% - 75%) -->
+          <article class="scene-panel scene-panel--3" id="scene3" data-scene-index="2">
+            <div class="scene-meta">
+              <span class="meta-tag">ACT III · HARMONY</span>
+              <span class="meta-coords">PANTHEON MATRIX · 06.50s</span>
+            </div>
+            <h2 class="scene-headline">
+              <span class="line-wrap"><span class="line-inner">A gallery sculpted</span></span>
+              <span class="line-wrap"><span class="line-inner">for centuries,</span></span>
+              <span class="line-wrap"><span class="line-inner serif-italic gold-text">not fleeting seasons.</span></span>
+            </h2>
+            <p class="scene-description">
+              In an age obsessed with disposable interfaces, we build digital monoliths. Platforms that radiate dignity, command respect, and outlast the noise of the decade.
+            </p>
+            <div class="scene-specs">
+              <span class="spec-badge">CORINTHIAN ORDER</span>
+              <span class="spec-badge">5-AXIS PRECISION</span>
+              <span class="spec-badge">CULTURAL WEIGHT</span>
+            </div>
+          </article>
+
+          <!-- ACT IV: 7.5s - 10.0s (Scroll 75% - 100%) -->
+          <article class="scene-panel scene-panel--4" id="scene4" data-scene-index="3">
+            <div class="scene-meta">
+              <span class="meta-tag">ACT IV · THE OPUS</span>
+              <span class="meta-coords">ARCHIVAL FINALE · 10.00s</span>
+            </div>
+            <h2 class="scene-headline">
+              <span class="line-wrap"><span class="line-inner">Not an agency</span></span>
+              <span class="line-wrap"><span class="line-inner">on the clock.</span></span>
+              <span class="line-wrap"><span class="line-inner serif-italic gold-text">A partner in the upside.</span></span>
+            </h2>
+            <p class="scene-description">
+              We remove retainers and eliminate hourly billing. We invest our capital, architecture, and craft into visionary partners, earning solely from the enterprise value created.
+            </p>
+            <div class="scene-actions">
+              <a href="#works" class="btn-primary-pill">
+                <span>EXPLORE THE ARCHIVE</span>
+                <svg class="pill-arrow" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5"/></svg>
+              </a>
+              <a href="#manifesto" class="btn-ghost-pill">READ THE PHILOSOPHY</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Bottom Timeline Scrubber Track on Stage -->
+        <div class="stage-footer-bar">
+          <span class="scrub-status-label">SCROLL VELOCITY SCRUB</span>
+          <div class="stage-progress-rail">
+            <div class="stage-progress-fill" id="stageProgressFill"></div>
+            <div class="stage-tick-markers">
+              <span style="left: 0%">0.0s</span>
+              <span style="left: 25%">2.5s</span>
+              <span style="left: 50%">5.0s</span>
+              <span style="left: 75%">7.5s</span>
+              <span style="left: 100%">10.0s</span>
+            </div>
+          </div>
+          <span class="scrub-hint-mobile">SWIPE OR SCROLL DOWN</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 2: THE MANIFESTO & PHILOSOPHY -->
+    <!-- ============================================================== -->
+    <section class="manifesto-section" id="manifesto">
+      <div class="container">
+        
+        <div class="manifesto-header">
+          <div class="section-label">
+            <span class="label-roman">PROLOGUE</span>
+            <span class="label-dash">—</span>
+            <span class="label-name">THE ARCHITECTURAL DOCTRINE</span>
+          </div>
+          <div class="manifesto-folio">DOC. 2026 / FOLIO 01</div>
+        </div>
+
+        <div class="manifesto-grid">
+          <div class="manifesto-lead">
+            <h2 class="editorial-display-statement">
+              "We reject the disposable web. A great digital commission should evoke the same quiet reverence as entering the Pantheon at dawn."
+            </h2>
+            <div class="curator-signature">
+              <span class="sig-name">MARCUS V. THORSEN</span>
+              <span class="sig-title">Master Architect & Principal Founder</span>
+            </div>
+          </div>
+
+          <div class="manifesto-body">
+            <div class="thesis-card">
+              <div class="thesis-num">01</div>
+              <h3>Stone Over Sand</h3>
+              <p>
+                The contemporary internet is engineered for obsolescence—built on rented frameworks and rushed templates. We construct software with the permanence of hand-hewn marble: lean, proprietary, unencumbered by third-party decay.
+              </p>
+            </div>
+
+            <div class="thesis-card">
+              <div class="thesis-num">02</div>
+              <h3>Sacred Geometry</h3>
+              <p>
+                Every column, typeface rhythm, and animation curve is mathematically calibrated to the Golden Ratio ($\Phi$). We do not guess margins; we derive them from optical resonance and classical acoustics.
+              </p>
+            </div>
+
+            <div class="thesis-card">
+              <div class="thesis-num">03</div>
+              <h3>Alignment of Upside</h3>
+              <p>
+                Billing by the hour incentivizes delay. Retainers reward complacency. We fund the strategy, software, and cinematic production ourselves, taking remuneration strictly from the net revenue and valuation expansion generated.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-width Quote Divider -->
+        <div class="monumental-strip">
+          <div class="strip-track">
+            <span>MONUMENTAL FORM · HIGH-CRAFT COMPUTATION · REVENUE-SHARE EQUITY · TIMELESS LONGEVITY · </span>
+            <span>MONUMENTAL FORM · HIGH-CRAFT COMPUTATION · REVENUE-SHARE EQUITY · TIMELESS LONGEVITY · </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 3: THE CURATED COMMISSIONS (WORKS) -->
+    <!-- ============================================================== -->
+    <section class="works-section" id="works">
+      <div class="container">
+
+        <div class="section-header-block">
+          <div class="section-label">
+            <span class="label-roman">CATALOGUE</span>
+            <span class="label-dash">—</span>
+            <span class="label-name">SELECTED COMMISSIONS</span>
+          </div>
+          <h2 class="section-title">Architectures of Permanence</h2>
+          <p class="section-lead">Each commission is an individual treatise in engineering, physical materials, and market domination.</p>
+        </div>
+
+        <div class="works-showcase">
+
+          <!-- Work 01 -->
+          <article class="work-card">
+            <div class="work-image-frame">
+              <img src="public/images/work_1.jpg" alt="Pantheon Pavilion at Athens" loading="lazy" class="work-img">
+              <div class="work-overlay-glass">
+                <span class="work-year">MMXXVI</span>
+                <span class="work-tag">SPATIAL PLATFORM</span>
+              </div>
+            </div>
+            <div class="work-content">
+              <div class="work-meta">
+                <span class="work-index">OPUS I</span>
+                <span class="work-client">INSTITUTE OF CLASSICAL STUDIES</span>
+              </div>
+              <h3 class="work-title">The Pantheon Pavilion</h3>
+              <p class="work-desc">
+                An immersive 3D spatial archive marrying neoclassical Greek statuary with sub-millisecond WebGL streaming. Scaled to 4.2M global researchers with zero server degradation.
+              </p>
+              <div class="work-metrics">
+                <div class="metric">
+                  <span class="metric-val">+340%</span>
+                  <span class="metric-label">ORGANIC REACH</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">18ms</span>
+                  <span class="metric-label">TTFB LATENCY</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">€14.8M</span>
+                  <span class="metric-label">ATTRIBUTED UPSIDE</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 02 -->
+          <article class="work-card work-card--reversed">
+            <div class="work-image-frame">
+              <img src="public/images/work_2.jpg" alt="Chronos Kyphi Horlogerie" loading="lazy" class="work-img">
+              <div class="work-overlay-glass">
+                <span class="work-year">MMXXV</span>
+                <span class="work-tag">HAUTE HORLOGERIE</span>
+              </div>
+            </div>
+            <div class="work-content">
+              <div class="work-meta">
+                <span class="work-index">OPUS II</span>
+                <span class="work-client">ATELIER CHRONOS GENÈVE</span>
+              </div>
+              <h3 class="work-title">Celestial Mechanics & Kyphi</h3>
+              <p class="work-desc">
+                Proprietary bespoke digital boutique for rare astronomical horology. Features real-time planetary tracking, bespoke client private rooms, and encrypted Swiss vault settlement.
+              </p>
+              <div class="work-metrics">
+                <div class="metric">
+                  <span class="metric-val">100%</span>
+                  <span class="metric-label">ALLOCATION SOLD</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">0.98s</span>
+                  <span class="metric-label">FULL PAGE HYDRATION</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">CHF 28M</span>
+                  <span class="metric-label">TRANSACTION VOLUME</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 03 -->
+          <article class="work-card">
+            <div class="work-image-frame">
+              <img src="public/images/work_3.jpg" alt="Villa Eos Sanctuary" loading="lazy" class="work-img">
+              <div class="work-overlay-glass">
+                <span class="work-year">MMXXVI</span>
+                <span class="work-tag">RESIDENTIAL SANCTUARY</span>
+              </div>
+            </div>
+            <div class="work-content">
+              <div class="work-meta">
+                <span class="work-index">OPUS III</span>
+                <span class="work-client">EOS HOLDINGS CAPRI</span>
+              </div>
+              <h3 class="work-title">Villa Eos Architectural Sovereign</h3>
+              <p class="work-desc">
+                Monolithic limestone sanctuary overlooking the Mediterranean. A comprehensive spatial digital twin and private investor consortium portal generating zero-friction capital syndication.
+              </p>
+              <div class="work-metrics">
+                <div class="metric">
+                  <span class="metric-val">48 HRS</span>
+                  <span class="metric-label">SYNDICATION WINDOW</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">99.99%</span>
+                  <span class="metric-label">UPTIME SLA</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">AWARDS</span>
+                  <span class="metric-label">AWWWARDS SOTD</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 4: THE FOUR PILLARS / ATELIER DISCIPLINES -->
+    <!-- ============================================================== -->
+    <section class="pillars-section" id="pillars">
+      <div class="container">
+
+        <div class="section-header-block">
+          <div class="section-label">
+            <span class="label-roman">METHODOLOGY</span>
+            <span class="label-dash">—</span>
+            <span class="label-name">THE FOUR PILLARS</span>
+          </div>
+          <h2 class="section-title">The Foundation of Our Craft</h2>
+          <p class="section-lead">We combine the discipline of classical stonemasonry with advanced computational systems.</p>
+        </div>
+
+        <div class="pillars-accordion">
+
+          <!-- Pillar 1 -->
+          <div class="pillar-row is-open" data-pillar="1">
+            <div class="pillar-summary">
+              <div class="pillar-id">
+                <span class="roman-id">I</span>
+                <span class="pillar-name">Material Purity & Zero Latency</span>
+              </div>
+              <div class="pillar-discipline">ENGINEERING</div>
+              <div class="pillar-toggle">+</div>
+            </div>
+            <div class="pillar-body">
+              <div class="pillar-content-grid">
+                <p>
+                  No bloated third-party trackers, no unnecessary node bundles. We write lean, hardware-accelerated code compiled to native browser primitives. The result is fluid 60fps rendering across every device, from high-refresh desktop monitors to mobile displays.
+                </p>
+                <ul class="spec-list">
+                  <li><strong>Core Engine:</strong> Native CSS Grid & Custom RAF Pipelines</li>
+                  <li><strong>Asset Pipeline:</strong> Intra-frame GOP Video Scrub & WebP Lossless</li>
+                  <li><strong>Target Benchmark:</strong> 100/100 Google Lighthouse Core Web Vitals</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-row" data-pillar="2">
+            <div class="pillar-summary">
+              <div class="pillar-id">
+                <span class="roman-id">II</span>
+                <span class="pillar-name">Proportion & The Golden Canon</span>
+              </div>
+              <div class="pillar-discipline">AESTHETICS</div>
+              <div class="pillar-toggle">+</div>
+            </div>
+            <div class="pillar-body">
+              <div class="pillar-content-grid">
+                <p>
+                  We adhere to the golden section $\Phi = 1.618$ and Vitruvian modularity. Every typographic scale step, margin, and layout proportion is calculated to elicit an unconscious sensation of architectural equilibrium and quiet authority.
+                </p>
+                <ul class="spec-list">
+                  <li><strong>Type Systems:</strong> Neoclassical Roman Serifs paired with Precision Grotesque</li>
+                  <li><strong>Kerning & Leading:</strong> Optical metrics with calibrated tabular figures</li>
+                  <li><strong>Spatial Rhythm:</strong> 8-point baseline grid rooted in classical architecture</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-row" data-pillar="3">
+            <div class="pillar-summary">
+              <div class="pillar-id">
+                <span class="roman-id">III</span>
+                <span class="pillar-name">The Revenue Upside Model</span>
+              </div>
+              <div class="pillar-discipline">PARTNERSHIP</div>
+              <div class="pillar-toggle">+</div>
+            </div>
+            <div class="pillar-body">
+              <div class="pillar-content-grid">
+                <p>
+                  Similar to Pear’s revolutionary covenant, we discard the traditional vendor-client model. We invest our engineering, visual artistry, and infrastructure into our partners. Our payment is tied directly to the growth we engineer together.
+                </p>
+                <ul class="spec-list">
+                  <li><strong>Initial Retainer:</strong> €0 upfront development fees</li>
+                  <li><strong>Remuneration:</strong> Agreed percentage of net attributed new revenue</li>
+                  <li><strong>Asset Ownership:</strong> You retain 100% full intellectual property & codebase</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-row" data-pillar="4">
+            <div class="pillar-summary">
+              <div class="pillar-id">
+                <span class="roman-id">IV</span>
+                <span class="pillar-name">Archival Longevity & Sovereignty</span>
+              </div>
+              <div class="pillar-discipline">GOVERNANCE</div>
+              <div class="pillar-toggle">+</div>
+            </div>
+            <div class="pillar-body">
+              <div class="pillar-content-grid">
+                <p>
+                  Modern digital work is fragile, often breaking when a cloud provider updates an API. We construct self-contained, sovereign software designed to operate without maintenance for over a decade, preserving your brand’s legacy in stone.
+                </p>
+                <ul class="spec-list">
+                  <li><strong>Deployment:</strong> Edge-distributed static binaries with offline capability</li>
+                  <li><strong>Security:</strong> Zero attack surface with zero dynamic server vulnerabilities</li>
+                  <li><strong>Longevity Target:</strong> Minimum 10-year operational lifecycle without refactoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 5: THE INQUIRY / COMMISSION CONSOLE -->
+    <!-- ============================================================== -->
+    <section class="commission-section" id="commission">
+      <div class="container">
+
+        <div class="commission-wrapper">
+          <div class="commission-header">
+            <div class="section-label">
+              <span class="label-roman">INSCRIBE</span>
+              <span class="label-dash">—</span>
+              <span class="label-name">PARTNERSHIP APPLICATION</span>
+            </div>
+            <h2 class="commission-title">Request a Master Commission</h2>
+            <p class="commission-lead">
+              We accept exactly four new partnerships per year. If you represent an established enterprise or luxury institution seeking generational transformation, submit your portfolio below.
+            </p>
+          </div>
+
+          <form id="commissionForm" class="commission-form" novalidate>
+            <div class="form-row form-row--duo">
+              <div class="form-group">
+                <label for="clientName">YOUR NAME & TITLE</label>
+                <input type="text" id="clientName" name="clientName" placeholder="e.g. Elena Vance, Managing Director" required>
+              </div>
+              <div class="form-group">
+                <label for="clientOrg">ORGANIZATION / INSTITUTION</label>
+                <input type="text" id="clientOrg" name="clientOrg" placeholder="e.g. Vance Cultural Foundation" required>
+              </div>
+            </div>
+
+            <div class="form-row form-row--duo">
+              <div class="form-group">
+                <label for="clientEmail">OFFICIAL EMAIL</label>
+                <input type="email" id="clientEmail" name="clientEmail" placeholder="vance@foundation.ch" required>
+              </div>
+              <div class="form-group">
+                <label for="commissionType">NATURE OF COMMISSION</label>
+                <select id="commissionType" name="commissionType" required>
+                  <option value="" disabled selected>Select Commission Classification</option>
+                  <option value="monument">Monumental Digital Flagship & Spatial System</option>
+                  <option value="luxury">Haute Horlogerie / Luxury Brand Architecture</option>
+                  <option value="platform">Enterprise Software & Revenue-Share Alliance</option>
+                  <option value="cultural">Cultural Archive / Museum Spatial Experience</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="projectVision">THE MONUMENTAL VISION & CURRENT BASELINE</label>
+              <textarea id="projectVision" name="projectVision" rows="4" placeholder="Briefly describe what your organization creates, your current annual revenue baseline, and the horizon you wish to command..." required></textarea>
+            </div>
+
+            <div class="form-footer">
+              <div class="form-pledge">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="pledge-lock">
+                  <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v2H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1V6a4 4 0 00-4-4zm2 6V6a2 2 0 10-4 0v2h4z" clip-rule="evenodd"/>
+                </svg>
+                <span>All disclosures are bound under strict Swiss archival confidentiality.</span>
+              </div>
+              <button type="submit" class="btn-submit-commission" id="submitBtn">
+                <span class="btn-text">TRANSMIT INSCRIPTION</span>
+                <svg class="pill-arrow" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
+            </div>
+
+            <div class="form-response-msg" id="formMsg" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- COLOPHON & ARCHIVAL FOOTER -->
+  <!-- ============================================================== -->
+  <footer class="atelier-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-monogram">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="23" stroke="#c9a96e" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <path d="M24 6L38 38H10L24 6Z" stroke="#c9a96e" stroke-width="1.6"/>
+              <circle cx="24" cy="24" r="4" fill="#c9a96e"/>
+            </svg>
+            <h2>ATELIER AURELIA</h2>
+          </div>
+          <p class="footer-tagline">Formed in Stone. Refined in Light. Digital architecture for the centuries.</p>
+        </div>
+
+        <div class="footer-nav-columns">
+          <div class="footer-col">
+            <h4>PANTHEON</h4>
+            <ul>
+              <li><a href="#cinemaHero">The Cinematic Opus</a></li>
+              <li><a href="#manifesto">The Manifesto</a></li>
+              <li><a href="#works">Selected Commissions</a></li>
+              <li><a href="#pillars">The Four Pillars</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>DIRECTIVES</h4>
+            <ul>
+              <li><a href="#commission">Alliance Inscription</a></li>
+              <li><a href="#commission">Revenue Covenant</a></li>
+              <li><a href="#top">Swiss Confidentiality</a></li>
+              <li><a href="#top">Archival Standard</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>CHRONOMETER</h4>
+            <div class="live-clock">
+              <span class="clock-city">OSLO / CET</span>
+              <span class="clock-time" id="osloClock">--:--:--</span>
+            </div>
+            <div class="live-clock" style="margin-top: 8px;">
+              <span class="clock-city">ATHENS / EET</span>
+              <span class="clock-time" id="athensClock">--:--:--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <span>© MMXXVI ATELIER AURELIA AS · ALL RIGHTS RESERVED.</span>
+          <span>REG. 984 219 042 · NO-0150 OSLO</span>
+        </div>
+        <div class="footer-back-to-top">
+          <a href="#top" aria-label="Return to zenith">
+            <span>ZENITH</span>
+            <svg viewBox="0 0 10 10" fill="none"><path d="M5 9V1M5 1L1 5M5 1L9 5" stroke="currentColor" stroke-width="1.2"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
